@@ -12,7 +12,6 @@ from functools import partial
 
 import torch
 import torch.nn as nn
-from fairscale.nn.checkpoint.checkpoint_activations import checkpoint_wrapper
 from timm.models.helpers import adapt_input_conv
 from timm.models.layers import DropPath, trunc_normal_
 from timm.models.vision_transformer import PatchEmbed
@@ -120,7 +119,6 @@ class Block(nn.Module):
         drop_path=0.0,
         act_layer=nn.GELU,
         norm_layer=nn.LayerNorm,
-        use_grad_checkpointing=False,
     ):
         super().__init__()
         self.norm1 = norm_layer(dim)
@@ -142,10 +140,6 @@ class Block(nn.Module):
             act_layer=act_layer,
             drop=drop,
         )
-
-        if use_grad_checkpointing:
-            self.attn = checkpoint_wrapper(self.attn)
-            self.mlp = checkpoint_wrapper(self.mlp)
 
     def forward(self, x, register_hook=False):
         x = x + self.drop_path(self.attn(self.norm1(x), register_hook=register_hook))
@@ -176,7 +170,6 @@ class VisionTransformer(nn.Module):
         attn_drop_rate=0.0,
         drop_path_rate=0.0,
         norm_layer=None,
-        use_grad_checkpointing=False,
         ckpt_layer=0,
     ):
         """
@@ -231,9 +224,6 @@ class VisionTransformer(nn.Module):
                     attn_drop=attn_drop_rate,
                     drop_path=dpr[i],
                     norm_layer=norm_layer,
-                    use_grad_checkpointing=(
-                        use_grad_checkpointing and i >= depth - ckpt_layer
-                    ),
                 )
                 for i in range(depth)
             ]

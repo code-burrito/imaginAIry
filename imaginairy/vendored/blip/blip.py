@@ -240,7 +240,7 @@ def init_tokenizer():
 
 
 def create_vit(
-    vit, image_size, use_grad_checkpointing=False, ckpt_layer=0, drop_path_rate=0
+    vit, image_size, ckpt_layer=0, drop_path_rate=0
 ):
 
     assert vit in ["base", "large"], "vit parameter must be base or large"
@@ -252,7 +252,6 @@ def create_vit(
             embed_dim=vision_width,
             depth=12,
             num_heads=12,
-            use_grad_checkpointing=use_grad_checkpointing,
             ckpt_layer=ckpt_layer,
             drop_path_rate=0 or drop_path_rate,
         )
@@ -264,7 +263,6 @@ def create_vit(
             embed_dim=vision_width,
             depth=24,
             num_heads=16,
-            use_grad_checkpointing=use_grad_checkpointing,
             ckpt_layer=ckpt_layer,
             drop_path_rate=0.1 or drop_path_rate,
         )

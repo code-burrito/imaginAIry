@@ -65,7 +65,6 @@ setup(
         "click-shell",
         "protobuf != 3.20.2, != 3.19.5",
         "facexlib",
-        "fairscale>=0.4.4",  # for vendored blip
         "ftfy",  # for vendored clip
         "torch>=1.13.1",
         "numpy",

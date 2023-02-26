@@ -53,7 +53,7 @@ exceptiongroup==1.1.0
     # via pytest
 facexlib==0.2.5
     # via imaginAIry (setup.py)
-fairscale==0.4.13
+# fairscale==0.4.13
     # via imaginAIry (setup.py)
 filelock==3.9.0
     # via
