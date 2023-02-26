@@ -36,7 +36,7 @@ with open("README.md", encoding="utf-8") as f:
 setup(
     name="cb-imaginAIry",
     author="Code Burrito",
-    version="0.1.0",
+    version="0.1.1",
     description="AI imagined images. Pythonic generation of stable diffusion images.",
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -56,6 +56,9 @@ setup(
             "vendored/noodle_soup_prompts/LICENSE",
         ]
     },
+    setup_requires=[
+        "setuptools"
+    ],
     install_requires=[
         "click",
         "click-help-colors",
@@ -78,7 +81,6 @@ setup(
         "requests",
         "einops>=0.3.0",
         "safetensors",
-        "setuptools",
         "timm>=0.4.12",  # for vendored blip
         "torchdiffeq",
         "transformers>=4.19.2",
