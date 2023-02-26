@@ -34,17 +34,12 @@ with open("README.md", encoding="utf-8") as f:
     )
 
 setup(
-    name="imaginAIry",
-    author="Bryce Drennan",
-    # author_email="b r y p y d o t io",
-    version="10.2.0",
+    name="cb-imaginAIry",
+    author="Code Burrito",
+    version="0.1.0",
     description="AI imagined images. Pythonic generation of stable diffusion images.",
     long_description=readme,
     long_description_content_type="text/markdown",
-    project_urls={
-        "Documentation": "https://github.com/brycedrennan/imaginAIry/blob/master/README.md",
-        "Source": "https://github.com/brycedrennan/imaginAIry",
-    },
     packages=find_packages(include=("imaginairy", "imaginairy.*")),
     scripts=scripts,
     entry_points=entry_points,
@@ -83,6 +78,7 @@ setup(
         "requests",
         "einops>=0.3.0",
         "safetensors",
+        "setuptools",
         "timm>=0.4.12",  # for vendored blip
         "torchdiffeq",
         "transformers>=4.19.2",

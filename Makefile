@@ -43,16 +43,16 @@ lint:  ## Run the code linter.
 
 deploy:  ## Deploy the package to pypi.org
 	pip install twine wheel
-	-git tag $$(python setup.py -V)
-	git push --tags
+#	-git tag $$(python setup.py -V)
+#	git push --tags
 	rm -rf dist
 	python setup.py bdist_wheel
 	python setup.py bdist_wheel --plat-name=win-amd64
 	#python setup.py sdist
 	@echo 'pypi.org Username: '
 	@read username && twine upload --verbose dist/* -u $$username;
-	rm -rf build
-	rm -rf dist
+#	rm -rf build
+#	rm -rf dist
 	@echo "Deploy successful! ✨ 🍰 ✨"
 
 build-dev-image:
