@@ -36,7 +36,7 @@ with open("README.md", encoding="utf-8") as f:
 setup(
     name="cb-imaginAIry",
     author="Code Burrito",
-    version="0.1.1",
+    version="0.1.2",
     description="AI imagined images. Pythonic generation of stable diffusion images.",
     long_description=readme,
     long_description_content_type="text/markdown",
